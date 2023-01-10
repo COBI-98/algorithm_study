@@ -30,6 +30,9 @@ public class Main {
     }
 
     public static void dfs(int start){
+        if(visit[start]) {
+            return;
+        }
         visit[start] = true;
         for (int i = 1; i <= vertex; i++) {
             if (!visit[i] && map[start][i] == 1){
