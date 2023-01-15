@@ -43,8 +43,17 @@ public class Main{
         System.out.println(sb);
     }
 
+//    public static void dfs(int start) {
+//
+//        visit[start] = true;
+//        sb.append(start + " ");
+//
+//        for(int i = 0 ; i <= vertex ; i++) {
+//            if(map[start][i] == 1 && !visit[i])
+//                dfs(i);
+//        }
+//    }
     public static void dfs(int start) {
-
         visit[start] = true;
         sb.append(start + " ");
 
@@ -52,7 +61,6 @@ public class Main{
             if(map[start][i] == 1 && !visit[i])
                 dfs(i);
         }
-
     }
 
     public static void bfs(int start) {
