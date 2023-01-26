@@ -1,51 +1,60 @@
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
+    // 10 20 30 40 45
+    public static int N;
+    public static int M;
+    public static int[] lecture;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-        int[] lessonList = new int[n];
+        lecture = new int[N];
+        st = new StringTokenizer(br.readLine());
 
         int left = 0;
-        int right = 0;
-        st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < n; i++) {
-            lessonList[i] = Integer.parseInt(st.nextToken());
-            right += lessonList[i];
-            left = Math.max(left, lessonList[i]);
+        int right =0;
+        for (int i = 0; i < N; i++) {
+            lecture[i] = Integer.parseInt(st.nextToken());
+            right += lecture[i];
+            left = Math.max(left,lecture[i]);
         }
-
         while (left <= right) {
             int mid = (left + right) / 2;
 
-            int count = getCount(n, lessonList, mid);
+            int count = getCount(N, lecture, mid);
 
-            if(count > m){
+            if (count > M) {
                 left = mid + 1;
-            }else{
+            } else {
                 right = mid - 1;
             }
         }
-
         System.out.println(left);
     }
 
-    private static int getCount(int n, int[] lessonList, int mid) {
+
+    private static int getCount(int n, int[] lecture, int mid) {
         int sum = 0;
         int count = 0;
         for (int i = 0; i < n; i++) {
-            if (sum + lessonList[i] > mid) {
+            if (sum + lecture[i] > mid) {
                 sum = 0;
                 count++;
             }
-            sum += lessonList[i];
+            sum += lecture[i];
         }
 
-        if(sum != 0) count++;
+        if (sum != 0) {
+            count++;
+        }
         return count;
     }
 }
