@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Main{
     public static int N;
     public static int[] arr;
 
@@ -27,7 +27,7 @@ public class Main {
         System.out.println(binarySearch());
     }
 
-    public static int binarySearch(){
+    public static long binarySearch(){
 
         if (totalRequest <= totalMoney){
             return arr[arr.length-1];
@@ -35,7 +35,7 @@ public class Main {
 
         int left = 0;
         int right  = totalMoney;
-
+        long answer = 0;
         while(left <= right){
             int sum = 0;
             int mid = (left + right) /2;
@@ -50,14 +50,13 @@ public class Main {
 
             if (sum > totalMoney){
                 right = mid -1;
-            }else if (sum < totalMoney){
+            }else {
                 left = mid+1;
-            }else{
-                return mid;
+                answer = Math.max(answer,mid);
             }
         }
 
-        return right;
+        return answer;
 
     }
 }
