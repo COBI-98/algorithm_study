@@ -9,7 +9,7 @@ class Solution {
             queue.offer(scoville[i]);
         }
         while(queue.peek() < K) {
-            if (queue.size() == 1){
+            if (queue.size() <= 1){
                 return -1;
             }
             
