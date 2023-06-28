@@ -49,9 +49,6 @@ public class Main{
             if (depth == 25-K ){
                 answer++;
             }
-            if (max < depth ){
-                max = depth;
-            }
             return;
         }
 
